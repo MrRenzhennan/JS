@@ -136,10 +136,10 @@ a3[0].color = "green";//slice浅复制，此处修改会影响原先的元素a1
 console.log(a1);
 ```
 ### **splice** 方法,对数组元素进行替换修改
-`array.splice(start, deleteCount[, item1[, item2[, …]]])`  
-start, 指定开始位置　　　　　　
-deleteCount, 指定删除的个数 　 　　　　　　
-item, 指定要添加的元素　　
+`array.splice(start, deleteCount[, item1[, item2[, …]]])`    
+start, 指定开始位置　　　　　　  
+deleteCount, 指定删除的个数 　 　　　　　　  
+item, 指定要添加的元素　　  
 splice() 方法与 slice() 方法的作用是不同的，splice() 方法会直接对数组进行修改.返回被删除的元素数组　　　　　　
 ```
 var myFish = ["angel", "clown", "mandarin", "surgeon"];
@@ -214,7 +214,7 @@ var result = a.filter(function(e,i,a){
 });
 console.log(result);
 ```
-:fore: `array.every(callback[,thisArg])`  
+:four: `array.every(callback[,thisArg])`  
 callback 用来测试数组的每个元素的函数。调用时使用参数 (element, index, array)。  
 只有所有元素都通过函数测试，才会返回true,否则返回false  
 thisArg 可选。执行 callback 时的用于 this 的值。
@@ -225,8 +225,8 @@ var ret = a.every(function(e,i,a){
   });
 console.log(ret);//false
 ```
-:fire:  `array.some(callback[,thisArg])`  
-callback 用来测试数组的每个元素的函数。调用时使用参数 (element, index, array)。  
+:five:  `array.some(callback[,thisArg])`  
+callback 用来测试数组的每个元素的函数。调用时使用参数 (element, index, array)。  
 只要有一个元素都通过函数测试，会返回true.  
 thisArg 可选。执行 callback 时的用于 this 的值。
 ```js
@@ -256,7 +256,7 @@ var mul = a.reduce(function(pre,cur,i,a){
 }, 1);
 console.log(mul);
 ```
-:server: `arr.reduceRight(callback,[initialValue])` 从数组的右边开始遍历数组  
+:seven: `arr.reduceRight(callback,[initialValue])` 从数组的右边开始遍历数组  
 callback  执行数组中每个值的函数，包含四个参数         
        previousValue   上一次调用回调返回的值，或者是提供的初始值（initialValue）        
        currentValue   数组中当前被处理的元素          
