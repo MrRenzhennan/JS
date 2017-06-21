@@ -268,3 +268,42 @@ if (a != null) {
   ....
 }
 ```
+## Js数值转换
+有三个函数可以把非数值转换为数值: Number() 、 parseInt() 和 parseFloat() 。  
+**Number()**即转型函数 Number() 可以用于任何数据类型,而另两个函数则专门用于把字符串转换成数值。　　　　
+```
+var num1 = Number("Hello world!"); //NaN
+var num2 = Number("");//0
+var num3 = Number("000011");//11
+var num4 = Number(true);//1
+```
+**parseInt()** 函数在转换字符串时,更多的是看其是否符合数值模式。它会忽略字符串前面的空格,直至找到第一个非空格字符。
+如果第一个字符不是数字字符或者负号, parseInt()就会返回 NaN ;也就是说,用 parseInt() 转换空字符串会返回 NaN ( Number() 对空字符返回 0)。　　
+如果第一个字符是数字字符, parseInt() 会继续解析第二个字符,直到解析完所有后续字符或者遇到了一个非数字字符。
+`例如, “1234blue” 会被转换为 1234,因为 “blue” 会被完全忽略。类似地, “22.5”会被转换为 22,因为小数点并不是有效的数字字符。`
+```
+console.log(parseInt(""));//NaN
+console.log(parseInt("1234abc"));//1234
+console.log(parseInt("abc"));//NaN
+console.log(parseInt("10.123"));//10
+console.log(parseInt("0x12"));//18
+console.log(parseInt("070"));//70, 并没有解析为８进制
+```
+为了消除在使用 parseInt() 函数时可能导致的上述困惑,可以为这个函数提供第二个参数:转换时使用的基数(即多少进制)。
+```
+console.log(parseInt("010", 8));
+console.log(parseInt("10", 2));
+console.log(parseInt("20",2));//超过范围时，转换为NaN
+console.log(parseInt("10", 10));
+console.log(parseInt("10", 16));
+```
+**parseFloat()**也是从第一个字符(位置 0)开始解析每个字符, 都按照十进制解析。而且也是一直解析到字符串末尾,或者解析到遇见一个无效的浮点数字字符为止。也就是说,字符串中的第一个小数点是有效的,而第二个小数点就是无效的了,因此它后面的字符串将被忽略。　
+```
+console.log("----parseFloat---------");
+console.log(parseFloat("10.234")); //10.234
+console.log(parseFloat("10.abc"));//10
+console.log(parseFloat("10.23.4"));//10.23
+console.log(parseFloat("0x10.234"));//0
+console.log(parseFloat("010.234"));//10.234
+console.log(parseFloat("abc"));//NaN
+```
