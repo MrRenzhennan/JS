@@ -271,7 +271,7 @@ ver ret = a.reduceRight(function(pre,cur,i,a){
   });
 //结果：2^(3^4)
 ```
-:eight: `arr.indexOf(searchElement[, fromIndex = 0])`
+:eight: `arr.indexOf(searchElement[, fromIndex = 0])`  
 searchElement   要查找的元素        
 fromIndex     指定开始位置,默认为0      
 返回给定元素能找在数组中找到的第一个索引值，否则返回-1。  
