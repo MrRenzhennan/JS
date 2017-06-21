@@ -70,7 +70,7 @@ for(var i = 0; i < 10; i++){
 ```
 ## label语句
 使用 label 语句可以在代码中添加标签,以便将来使用.  
-label 语句的语法:label: statement
+label 语句的语法   `label: statement`
 ```
 label-one: for (var i = 0; i < 10; i++) {
               if (i == 5){
