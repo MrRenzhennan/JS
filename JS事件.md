@@ -24,13 +24,13 @@ javaScript与HTML之间的交互是通过事件实现的.事件,就是文档或�
   onreset|重置表单时
   
   ##  :large_blue_circle: 事件处理
-  **事件处理的四中方式:**
-  1. HTML事件处理,即添加到HTML结构中  
-  `<button onclick="alert('hello')">按钮</button>`
-  2. DOMO级的事件处理程序,把函数赋值给一个事件处理程序
-  `obj.onclick = function(event){ ... }`
-  3. DOM2级事件处理
-  ```js
+  **事件处理的四中方式:**
+  1. HTML事件处理,即添加到HTML结构中   
+  `<button onclick="alert('hello')">按钮</button>`  
+  2. DOMO级的事件处理程序,把函数赋值给一个事件处理程序  
+  `obj.onclick = function(event){ ... }`  
+  3. DOM2级事件处理
+  ```js
   <script type="text/javascript">
         var f = document.getElementById("f") //获取 id = f 的元素
         var s = document.getElementById("s") //获取 id = s  的元素
@@ -88,4 +88,4 @@ javaScript与HTML之间的交互是通过事件实现的.事件,就是文档或�
             }
         }
     </script>
-  ```
+    ```
