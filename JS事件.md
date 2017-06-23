@@ -23,14 +23,72 @@ javaScript与HTML之间的交互是通过事件实现的.事件,就是文档或�
   onsubmit|表单提交事件
   onreset|重置表单时
   
-  ##  :large_blue_circle: 事件处理
+##  :large_blue_circle: 事件处理
   **事件处理的四中方式:**
   1. HTML事件处理,即添加到HTML结构中   
   `<button onclick="alert('hello')">按钮</button>`  
   2. DOMO级的事件处理程序,把函数赋值给一个事件处理程序  
-  `obj.onclick = function(event){ ... }`  
+  `obj.onclick = function(event){ ... }`
+```js
+  <script type="text/javascript">
+        window.onload = function() {
+            //window.onload 等整个页面的所有资源都加载完毕之后才会执行这里面的代码
+
+            var btn1 = document.getElementById("btn1"); //document.getElementById("id") 根据指定的id 属性值得到对象.
+            //返回id属性值等于sID的第一个对象的引用.假如对应的是一组对象,则返回
+            //改组对象中的第一个.如果无符合条件的对象,则返回null
+            //console.log(btn1); //<button id="btn1">按钮1</button>
+
+            //DOM 0级
+            /*
+            事件处理四种方式：
+            1. HTML事件处理，即添加到HTML结构中
+                <button onclick="alert('hello');">按钮</button>
+            2. DOM0级的事件处理程序,把函数赋值给一个事件处理程序
+                obj.onclick = function(event){ ....};
+            3. DOM2级事件处理
+                obj.addEventListener("事件名", "事件处理函数", "布尔值")
+                    true 事件捕获方式
+                    false  事件冒泡
+
+                obj.removeEventListener("事件名", "事件处理函数", "布尔值")
+
+            IE事件处理程序
+                obj.attachEvent("on事件名", "事件处理函数")
+                obj.detachEvent("on事件名", "事件处理函数")
+
+            */
+
+            // 获得结点
+            // document.getElementById(“id”) id 为标记的 #id
+            // document.getElementsByTagName(“div”) 所有的div div
+            // document.getElementsByClassName(“test”) 所有类名为 test
+
+
+            btn1.onclick = function(event) { //注册点击事件
+                console.log("click 111");
+            }
+
+            btn1.onclick = null; //删除注册的点击事件
+
+            var form = document.getElementById("form");
+
+            //在form 元素上 注册submit事件
+            //onsubmit 属性在提交表单时触发。onsubmit 属性只在 <form> 中使用。当表单提交时 会触发 sumbit事件
+            form.onsubmit = function() {
+                console.log("触发 submit。");
+            };
+
+            //为 form表单注册 onreset事件
+            //onreset 事件 会在表单中的重置按钮被点击时发生
+            form.onreset = function() {
+                console.log("触发 reset 。。。。");
+            }
+        }
+    </script>
+```
   3. DOM2级事件处理
-  ```js
+```js
   <script type="text/javascript">
         var f = document.getElementById("f") //获取 id = f 的元素
         var s = document.getElementById("s") //获取 id = s  的元素
