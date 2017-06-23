@@ -147,3 +147,88 @@ javaScript与HTML之间的交互是通过事件实现的.事件,就是文档或�
         }
     </script>
 ```
+# DOM文档对象模型
+DOM为文档提供了结构化表示,并定义了如何通过脚本来访问文档结构  
+整个文档就是一棵树,树的根文document.
+[图片]()
+
+## node节点
+整个文档全都由节点组成,包括元素(HTML标签)节点,文字节点,属性节点.  
+每个节点都有一个nodeType属性,用于表明节点的类型.  
+节点类型由在node类型中定义的下列12个数值常量来表示,任何节点类型必居其一:  
+```js
+Node.ELEMENT_NODE(1)；
+Node.ATTRIBUTE_NODE(2)；
+Node.TEXT_NODE(3)；
+Node.CDATA_SECTION_NODE(4)；
+Node.ENTITY_REFERENCE_NODE(5)；
+Node.ENTITY_NODE(6)；
+Node.PROCESSING_INSTRUCTION_NODE(7)；
+Node.COMMENT_NODE(8)；
+Node.DOCUMENT_NODE(9)；
+Node.DOCUMENT_TYPE_NODE(10)；
+Node.DOCUMENT_FRAGMENT_NODE(11)；
+Node.NOTATION_NODE(12)。
+```
+### 获得节点
+```js
+document.getElementById(“id”)  //id 为标记的 #id
+document.getElementsByTagName(“div”)  //所有的div div
+document.getElementsByClassName(“test”)  //所有类名为 test
+```
+### 节点的访问
+1. 父节点 parentNode  
+```js
+var parent = obj.parentNode
+```
+2.兄弟节点  
+```js
+nextSibling 下一个兄弟节点 ie 678 写法
+nextElementSibling
+previousSibling 上一个兄弟节点 ie678
+previousElementSibling 谷歌 火狐等
+```
+```js
+兼容写法
+var one = documeng.getElementById("one");
+var next = one.nextElementSibling || one.nextSibling;
+```
+3. 第一个节点和最后一个节点  
+```js
+firstChild,,lastChild
+firstElementChild, lastElementChild
+```
+```js
+兼容写法
+  var par = document.getElementById("par");
+  var fist = par.firstElementChild || par.firstChild;
+  var last = par.lastElementChild || par.lastChild;
+```
+4. 父元素的所有子节点  
+**childNodes** 包含文本节点，比如空格和换行  
+**children** 仅仅包含标签,不用考虑兼容性，都适用。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
