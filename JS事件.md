@@ -207,11 +207,63 @@ firstElementChild, lastElementChild
 4. 父元素的所有子节点  
 **childNodes** 包含文本节点，比如空格和换行  
 **children** 仅仅包含标签,不用考虑兼容性，都适用。
+```js
+var par = document.getElementById("par");
+var childs = par.children;
+var childs1 = par.childNodes;
+```
+### DOM节点操作
+1. 创建节点
+```js
+var test = document.createElement("div");
+var test1 = document.createElement("span");
+```
+2. 添加节点
+**a.appendChild(one)**   将node节点添加到a的末尾,并且node节点是a节点的子节点
+```js
+var a = document.getElementById("par")
+var node = document.createElement("div")
+```
+**a.insertBefore(newnode,refnode)**  将newnode节点插入到a节点的refnode之前
+```js
+var a = document.getElementById("par")
+var node = document.createElement("div")
+a.insertBefore(node, a.firstElementChild)//插入节点
+a.insertBefore(node,null); //类似appendchild ,插入到末尾
+```
+3. 节点属性操作
+**getAttribute("属性")**  设置属性值  
+**getAttribute("属性","属性值")**  设置属性  
+**removeAttribute("属性")**  移除属性  
+```js
+node.getAtteibute("class")   //获取class属性值
+node.setAttribute("class","one")   //设置class属性值为"one"
+node.removeAttribute("class")  //移除class属性
+```
+4. 节点css 设置   
+**cssText** 修改多个css属性  
+```js
+var node = document.getElementById("id");
+node.style.cssText = 'width:100px;height:200px;color:red'
+```
+5. 移除节点  
+**a.removeChild(b)**   //返回被删除的节点
+```js
+var a = document.getElementById(“id”);
+var b = a.removeChild(a.firstChild);//移除第一个节点
+```
+6.  克隆节点  
+**a.cloneNode(true)**,   
+返回节点的副本，如果参数为true,则为深拷贝，拷贝所有子节点；  
+如果参数为false，那么为浅拷贝，仅仅拷贝节点本身。
+```js
+var a = document.getElementById(“id”);
+var clone = a.cloneNode(true);
 
-
-
-
-
+var s = document.getElementById("s");
+var cloneNode = s.cloneNode(true);
+document.body.appendChild(cloneNode); //将克隆的节点添加到 末尾
+```
 
 
 
