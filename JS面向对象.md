@@ -265,6 +265,19 @@ var data = new Data
         showNum.call(obj); // 10   在obj对象上调用showNum函数     call 作用 借用 obj对象的属性
         showNum.apply(obj, null); //10  在obj对象上调用showNum函数     apply 作用 借用obj对象的属性
 ```
+```js
+    <script type="text/javascript">
+        function show(arg1, arg2) {
+            console.log(arg1);
+            console.log(arg2);
+        }
+
+        show(10, 20);
+        //call方法可以传递数组, 单call方法传递的参数必须以逗号","作为分隔符
+        show.call(null, [30, 1, 2, 3, ], 12);
+        //apply方法 要传递的方法 必须放在一个数组中
+        show.apply(null, [1, 2, 3]);
+```
 ### [组合继承] 原型链继承和借用构造函数继承相结合
 ```js
         function F() {
