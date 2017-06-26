@@ -1,4 +1,4 @@
-#js常用对象总结
+# js常用对象总结
 
 js中内置了17个对象,  
 常用的是Array对象,Data对象,正则表达式对象,string对象,Global对象
