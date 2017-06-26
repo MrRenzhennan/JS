@@ -124,6 +124,27 @@ var data = new Data
         console.log(two);
         one.say("wo shi two")
 ```
+```js
+        var obj = {
+            name: "lisi",
+            getName: function() {
+                return this.name;
+            },
+            age: 10,
+            getAge: function() {
+                return this.age;
+            }
+        };
+        console.log(obj.getName());
+        obj.score = 100; //为 obj 对象添加属性   score:100;
+        console.log(obj);
+
+
+        /*非对象类型是不可以添加属性和方法
+        var num = 100;
+        num.index = 0;
+        console.log(num.index);*/
+```
 ## [继承]
 ### :one: 原型链继承
 ```js
