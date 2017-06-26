@@ -181,3 +181,99 @@ var data = new Data
         console.log(S.prototype); //F {colors: Array[4], value: 10}
         /*继承过来的属性中,如果对数组进行了修改 那么在这个函数中 数组变量 将永远是修改后的样式  ;;;;;但是 普通变量将不会被改变,需要每次改变,修改一次*/
 ```
+### [call/apply]借用构造函数的继承
+```js
+        function Super(name, age) {
+            this.name = name;
+            this.age = age;
+        };
+
+        function Sub(name, age, id) {
+            Super.call(this, name, age); //call方法    调用Super函数的方法 自己用
+            //console.log(this); //Sub {name: "lisi", age: 10}
+            this.id = id;
+        }
+
+        var one = new Sub("lisi", 10, 1000);
+        console.log(one); //Sub {name: "lisi", age: 10, id: 1000}
+```
+[call和apply的区别]
+```js
+        /************************************************************************/
+        //call 和 apply 方法的应用
+        console.log(Math.max.apply(null, [1, 2, 3, 4, 5])); //5
+        console.log(Math.max.call(null, [1, 2, 3, 4, 5])); //NaN
+        /*call, apply都属于Function.prototype的一个方法,它是JavaScript引擎内在实现的,因为属于Function.prototype,所以每个Function对象实例,也就是每个方法都有call, apply属性.
+        既然作为方法的属性,那它们的使用就当然是针对方法的了.这两个方法是容易混淆的,因为它们的作用一样,只是使用方式不同.
+        call方法:
+        语法：call([thisObj[,arg1[, arg2[,   [,.argN]]]]])
+        定义：调用一个对象的一个方法，以另一个对象替换当前对象。
+        说明：
+        call 方法可以用来代替另一个对象调用一个方法。call 方法可将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。
+        如果没有提供 thisObj 参数，那么 Global 对象被用作 thisObj。
+        apply方法：
+        语法：apply([thisObj[,argArray]])
+        定义：应用某一对象的一个方法，用另一个对象替换当前对象。
+        说明：
+        如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError。
+        如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数
+        它们的不同之处：
+        apply：最多只能有两个参数——新this对象和一个数组 argArray。如果给该方法传递多个参数，则把参数都写进这个数组里面，当然，即使只有一个参数，也要写进数组里面。
+              如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError。
+              如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数。
+        call：则是直接的参数列表，主要用在js对象各方法互相调用的时候，使当前this实例指针保持一致,或在特殊情况下需要改变this指针。
+              如果没有提供 thisObj 参数，那么 Global 对象被用作 thisObj。
+        更简单地说，apply和call功能一样，只是传入的参数列表形式不同：如 func.call(func1,var1,var2,var3)对应的apply写法为:func.apply(func1,[var1,var2,var3])
+        call, apply作用就是借用别人的方法来调用,就像调用自己的一样
+        */
+
+        var obj = {
+            num: 10
+        };
+        var num = 20;
+
+        function showNum() {
+            console.log("this.num = " + this.num);
+        }
+
+        showNum(); //20   在window上调用该函数
+        //给一个方法 或函数换一个环境执行   这时 函数中的 this 全部指向 call或apply 指向的对象
+        //call和apple方法的基本区别:call方法参数(可以是数组)是以逗号","作为分隔符的; apple方法 参数只能是数组
+        showNum.call(obj); // 10   在obj对象上调用showNum函数     call 作用 借用 obj对象的属性
+        showNum.apply(obj, null); //10  在obj对象上调用showNum函数     apply 作用 借用obj对象的属性
+```
+### [组合继承] 原型链继承和借用构造函数继承相结合
+```js
+        function F() {
+            this.name = name;
+            this.colors = ["red", "green", "blue"];
+        };
+        F.prototype.getName = function() { //为 F函数添加方法      prototype 添加方法
+            console.log(this.name);
+        };
+
+        function S(name, age) {
+            F.call(this, name); //call 方法 将F函数的name属性 继承 自己使用    call方法  添加属性
+            this.age = age;
+        };
+
+        S.prototype = new F(); //将 F函数的全部属性 全部 给S函数
+        S.prototype.constructor = S;
+        S.prototype.getAge = function() {
+            console.log(this.age);
+        };
+
+        one = new S("zhangsan", 33);
+        one.colors.push("black");
+
+        console.log(one);
+        console.log(one.colors); //["red", "green", "blue", "black"]
+        one.getName();
+        one.getAge();
+
+        two = new S("zhangliu", 23);
+        console.log(two.colors); //["red", "green", "blue"]
+
+        console.log(typeof one); //object
+        console.log(one.constructor); // functionS(){} 得到某个对象是由那个对象生成
+```
