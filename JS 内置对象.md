@@ -89,8 +89,39 @@ num = Math.floor(Math.random()*12 + 0);
 num = Math.floor(Math.random()*9 + 2);
 ```
 ### :five: Date对象
-
-
+要创建一个日期对象,使用new操作符和Date构造函数即可
+```js
+var d = new Date()
+```
+1. get/setDate()：返回或设置日期。
+2. get/setFullYear():返回或设置年份，用四位数表示。
+3. get/setYear():返回或设置年份。
+4. get/setMonth():返回或设置月份。0为一月
+5. get/setHours():返回或设置小时，24小时制
+6. get/setMinutes():返回或设置分钟数。
+7. get/setSeconds():返回或设置秒钟数。
+8. get/setTime():返回或设置时间（毫秒为单位）
+```js
+console.log(d.getDate()); //获取日
+console.log(d.getDay()); //获取星期
+console.log(d.getMonth()); //获取月份，从0 开始
+console.log(d.getFullYear()); //获取年份
+```
+#### Data 日期格式转换为字符串的方法
+1. toDateString() ——以特定于实现的格式显示星期几、月、日和年;
+2. toTimeString() ——以特定于实现的格式显示时、分、秒和时区;
+3. toLocaleDateString() ——以特定于地区的格式显示星期几、月、日和年;
+4. toLocaleTimeString() ——以特定于实现的格式显示时、分、秒;
+5. toUTCString() ——以特定于实现的格式完整的 UTC 日期。  
+   与 toLocaleString() 和 toString() 方法一样,以上这些字符串格式方法的输出也是因浏览器而异的,  
+   因此没有哪一个方法能够用来在用户界面中显示一致的日期信息。
+```js
+console.log(d.toDateString());
+console.log(d.toLocaleDateString());
+console.log(d.toTimeString());
+console.log(d.toLocaleTimeString());
+console.log(d.toUTCString());
+```
 
 
 
