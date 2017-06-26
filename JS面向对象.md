@@ -124,6 +124,7 @@ var data = new Data
         console.log(two);
         one.say("wo shi two")
 ```
+### :six: 基本创建
 ```js
         var obj = {
             name: "lisi",
