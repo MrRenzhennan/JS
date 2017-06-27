@@ -122,8 +122,15 @@ console.log(d.toTimeString());
 console.log(d.toLocaleTimeString());
 console.log(d.toUTCString());
 ```
-
-
+### :six: function 对象可以将函数作为对象访问,并可以在执行期间动态生成和调用函数
+方法:  
+1. **apply():** 用于将一个对象中的方法应用到另一个对象 
+2. **call(this)/call(this,arg1,arg2):** 允许调用另一个函数的方法
+3. **toString:** 用于将一个对象转换为字符串  
+属性:  
+**arguments** 表示函数参数的数组  
+**caller** 表示调用当前正在执行的函数  
+**prototypt** 为对象添加新的属性和方法
 
 
 
